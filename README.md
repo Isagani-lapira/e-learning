@@ -10,7 +10,7 @@ git clone https://github.com/Isagani-lapira/e-learning.git
 
 2. Navigate to project folder and open it on VS code
 ```bash
-cd cd e-learning
+cd e-learning
 code .
 ```
 
