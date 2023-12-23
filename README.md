@@ -46,12 +46,14 @@ npm install
 ```
 
 7. Go to the root folder (elearning folder)
-8. Make migrations and migrate to update models (if any changes)
+8. ```bash
+   py manage.py tailwind start
+   ```
+9. Make migrations and migrate to update models (if any changes)
 ```bash
 py manage.py makemigrations
 py manage.py migrate
 ```
-5. Run project
 ```bash
 py manage.py runserver
 ```
