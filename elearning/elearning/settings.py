@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'apps.accountapp.apps.AccountappConfig',
     'apps.profileapp.apps.ProfileappConfig',
+    'apps.courseapp.apps.CourseappConfig'
 ]
 
 MIDDLEWARE = [
