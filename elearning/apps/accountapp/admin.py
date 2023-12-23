@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User
+from .models import*
 
 #admin site diplay
 class CustomUser(UserAdmin):
@@ -16,3 +16,9 @@ class CustomUser(UserAdmin):
     ]
     
 admin.site.register(User, CustomUser)
+
+
+class InstructorAdmin(admin.ModelAdmin):
+    list_display = ['user','instructor_description','profile_img']
+    
+admin.site.register(Instructor,InstructorAdmin)
