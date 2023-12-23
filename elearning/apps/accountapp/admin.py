@@ -22,3 +22,9 @@ class InstructorAdmin(admin.ModelAdmin):
     list_display = ['user','instructor_description','profile_img']
     
 admin.site.register(Instructor,InstructorAdmin)
+
+
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ['instructor','title','date_created']
+    
+admin.site.register(Course, CourseAdmin)
