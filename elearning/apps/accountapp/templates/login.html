@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static  %}
+{% block title %}
+login
+{% endblock %}
+
+{% block content %}
+<section class=" h-full w-full flex items-center justify-center">
+    <div class="flex items-center justify-center w-4/5 h-3/5 flex-col rounded-md shadow-md md:flex-row">
+        <div class="w-full h-full hidden md:block">
+            <img class="w-full h-full object-obtain rounded-l-md" src="{% static 'assets/login_vector.png' %}" alt=""/>
+        </div>
+        <div class="w-full flex-col p-5 gap-2 h-full">
+            <p class="text-3xl font-bold text-primary text-center">Sign in</p>
+            <form method="POST" action="{% url 'accountapp:login_url' %}" class="flex flex-col justify-center h-4/5 w-full">
+                {% csrf_token %}
+
+                <div class="flex flex-col gap-2">
+                    {{ form.username.errors }}
+                    <label class="text-gray-600" for="{{ form.username.id_for_label }}">Email address / Username</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="flex flex-col gap-2 mt-3">
+                    <label class="text-gray-600" for="{{ form.password.id_for_label }}">Password</label>
+                    {{ form.password }}
+                </div>
+
+                <button class="bg-secondary hover:bg-[#78A582] font-medium text-white py-3 mt-5 rounded-md">Sign in</button>
+               
+                <p class="text-center mt-2">
+                    <a href="">Doesn’t have an account? <span class="text-primary font-medium">Register here..</span></a>
+                </p>
+            </form>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
