@@ -1,3 +1,21 @@
 .errorlist{
     color: rgb(240, 124, 124);
 }
+
+.success{
+    width: 100%;
+    padding: 0 3px;
+    background-color: rgb(194 223 194 / 66%);
+    border: 2px solid rgb(187 225 187 / 7%);
+    border-radius: 5px;
+    color: #696767;
+}
+
+.error {
+    width: 100%;
+    padding: 0 3px;
+    background-color: rgb(237 163 163);
+    border: 2px solid rgb(223 178 178);
+    border-radius: 5px;
+    color: #e7e7e7;
+}
