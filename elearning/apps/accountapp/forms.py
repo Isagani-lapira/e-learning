@@ -25,6 +25,7 @@ class RegistrationForm(forms.Form):
         widget=forms.TextInput(attrs={
             'placeholder':'Enter first name',
             'class':'w-full rounded-md border border-border py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary',
+            'autocomplete':'off'
         })
     )
     last_name = forms.CharField(
@@ -33,6 +34,7 @@ class RegistrationForm(forms.Form):
         widget=forms.TextInput(attrs={
             'placeholder':'Enter last name',
             'class':'w-full rounded-md border border-border py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary',
+            'autocomplete':'off'
         })
     )
     
@@ -41,6 +43,7 @@ class RegistrationForm(forms.Form):
         widget=forms.TextInput(attrs={
             'placeholder':'Enter email address',
             'class':'w-full rounded-md border border-border py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary',
+            'autocomplete':'off'
         })
     )
     
@@ -49,6 +52,7 @@ class RegistrationForm(forms.Form):
         widget=forms.TextInput(attrs={
             'placeholder':'Enter email address',
             'class':'w-full rounded-md border border-border py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary',
+            'autocomplete':'off'
         })
     )
     
