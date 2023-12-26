@@ -6,46 +6,48 @@ Regiter
 
 {% block content %}
 <section class=" h-full w-full flex items-center justify-center">
-    <div class="flex items-center justify-center w-4/5 h-3/5 flex-col rounded-md shadow-md md:flex-row">
+    <div class="flex items-center justify-center w-4/5 h-3/5 flex-col rounded-md shadow-lg shadow-border md:flex-row">
+        <!-- logo -->
         <div class="w-full h-full hidden md:block">
             <img class="w-full h-full object-obtain rounded-l-md" src="{% static 'assets/login_vector.png' %}" alt=""/>
         </div>
-        <div class="w-full flex-col px-5 gap-2 h-full">
-            <p class="text-3xl font-bold text-primary text-center mb-2">Register</p>
+        <!-- forms -->
+        <div class="w-full flex-col px-5 gap-2 h-full rounded-md">
+            <p class="text-lg md:text-3xl font-bold text-secondary text-center mb-2">Register</p>
             <form method="POST" action="{% url 'accountapp:register_url' %}" class="flex flex-col gap-2 p-3 justify-center h-4/5 w-full">
                 {% csrf_token %}
                 <div class="flex gap-2 w-full">
                     <div class="flex flex-col w-1/2">
-                        <label for="{{forms.first_name.id_for_label}}">First name</label>
+                        <label for="{{ form.first_name.id_for_label }}">First name</label>
                         {{form.first_name}}
                     </div>
                     <div class="flex flex-col w-1/2">
-                        <label for="{{forms.last_name.id_for_label}}">Last name</label>
+                        <label for="{{form.last_name.id_for_label}}">Last name</label>
                         {{form.last_name}}
                     </div>
                     
                 </div>
                 <div class="flex flex-col">
                     <div class="flex justify-between">
-                        <label for="{{forms.email.id_for_label}}">Username</label>
+                        <label for="{{form.email.id_for_label}}">Username</label>
                         {{ form.username.errors }}
                     </div>
                     {{form.username}}
                 </div>
                 <div class="flex flex-col">
                     <div class="flex justify-between">
-                        <label for="{{forms.email.id_for_label}}">Email address</label>
+                        <label for="{{form.email.id_for_label}}">Email address</label>
                         {{ form.email.errors }}
                     </div>
                     {{form.email}}
                     
                 </div>
                 <div class="flex flex-col">
-                    <label for="{{forms.password.id_for_label}}">Password</label>
+                    <label for="{{form.password.id_for_label}}">Password</label>
                     {{form.password}}
                 </div>
 
-                <button type="submit" class="w-full py-3 mt-2 bg-secondary text-white rounded-md font-medium">Create account</button>
+                <button type="submit" class="w-full py-3 mt-2 bg-primary text-white rounded-md font-medium">Create account</button>
             </form>
         </div>
     </div>
