@@ -45,6 +45,7 @@ Regiter
                 <div class="flex flex-col">
                     <label for="{{form.password.id_for_label}}">Password</label>
                     {{form.password}}
+                    {{ form.password.errors }}
                 </div>
 
                 <button type="submit" class="w-full py-3 mt-2 bg-primary text-white rounded-md font-medium">Create account</button>
