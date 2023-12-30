@@ -1,10 +1,10 @@
 from django.shortcuts import redirect, render, HttpResponse
-from django.contrib.auth import authenticate, get_user_model
+from django.contrib.auth import authenticate, get_user_model, login,logout
 from .forms import*
 from django.contrib import messages
 # Create your views here.
 
-def login(request):
+def login_user(request):
     # check if the request is using form
     if request.method == "POST":
         login_form = LoginForm(request.POST)
@@ -16,8 +16,8 @@ def login(request):
                 #check if the credentials are correct
                 user = authenticate(request,username=username,password=password)
                 if user is not None:
+                    login(request,user) #session to login the current user
                     #redirect to home page
-                    pass
                 else: messages.error(request,"Error: Invalid username or password") #session of message
                 return redirect("accountapp:login_url") #back to login
             except Exception as e:
@@ -30,7 +30,13 @@ def login(request):
     context = {
         "form": login_form
     }
-    return render(request,template,context)
+    
+    # check if the user already logged in
+    if request.user.is_authenticated:
+        #redirect to home page
+        pass
+    else:
+        return render(request,template,context) #logged in
 
 User = get_user_model()
 
@@ -68,4 +74,9 @@ def registration(request):
         "form": form,
     }
 
-    return render(request, template, context)
+    #check if already logged in
+    if request.user.is_authenticated:
+        #go to home page
+        pass
+    else:
+        return render(request, template, context) #registration page

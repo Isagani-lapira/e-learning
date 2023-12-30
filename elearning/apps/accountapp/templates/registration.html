@@ -45,10 +45,14 @@ Regiter
                 <div class="flex flex-col">
                     <label for="{{form.password.id_for_label}}">Password</label>
                     {{form.password}}
+                    {{ form.password.errors }}
                 </div>
 
                 <button type="submit" class="w-full py-3 mt-2 bg-primary text-white rounded-md font-medium">Create account</button>
             </form>
+            <a href="{% url 'accountapp:login_url' %}">
+                <p class="text-center mt-2">Already have an account? <span class="font-bold text-primary">Login</span></p>
+            </a>
         </div>
     </div>
 </section>

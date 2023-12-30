@@ -1,5 +1,6 @@
 from django import forms
 from .models import User
+import re
 class LoginForm(forms.Form):
     username = forms.CharField(
         label="Email address/username",
@@ -80,6 +81,19 @@ class RegistrationForm(forms.Form):
         #check if email is already taken
         if User.objects.filter(email=email).exists():
             self.add_error("email","Email already taken")
+        
+        #password requirements
+        uppercase_letters = "(?=.*?[A-Z])"
+        lowercase_letters = "(?=.*?[a-z])"
+        digits = "(?=.*?[0-9])"
+        special_char = "(?=.*?[#?!@$%^&*-])"
+        min_char = ".{8,}$"
+        
+        #check password pattern
+        password_patterns = "^"+"".join([uppercase_letters,lowercase_letters,digits,special_char,min_char])      
+        is_valid = re.match(password_patterns,password)
+        if not is_valid:
+            self.add_error("password","password should contain:[uppercase,lowercase,numbers,min 8 characters]")
         
         return cleaned_data
         
