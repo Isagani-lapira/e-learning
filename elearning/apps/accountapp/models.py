@@ -28,3 +28,9 @@ class Student(models.Model):
     student_no = models.CharField(max_length = 30, primary_key=True, default=student_no_value)
     
     
+class Badge(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    badge_name = models.CharField(max_length = 60)
+    date_obtain = models.DateTimeField(auto_now = True)
+    
+    
