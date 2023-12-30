@@ -24,11 +24,6 @@ class InstructorAdmin(admin.ModelAdmin):
 admin.site.register(Instructor,InstructorAdmin)
 
 
-class CourseAdmin(admin.ModelAdmin):
-    list_display = ['instructor','title','date_created']
-    
-admin.site.register(Course, CourseAdmin)
-
 class StudentAdmin(admin.ModelAdmin):
     list_display = ['user','student_no']
     

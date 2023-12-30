@@ -15,13 +15,6 @@ class Instructor(models.Model):
     profile_img = models.ImageField(null=True, blank=True, upload_to="images/") #default image location
     
     
-class Course(models.Model):
-    instructor = models.ForeignKey(Instructor,on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    certificate = models.ImageField(null=True,blank=True,upload_to="images/")
-    date_created = models.DateTimeField(auto_now=True) #get current date time once it created
-    
 class Student(models.Model):
     #get random characters
     def RandomStudentNo():
@@ -33,5 +26,11 @@ class Student(models.Model):
     #set up new primary key
     student_no_value = f"{RandomStudentNo()}{random.randint(0,1000)}"
     student_no = models.CharField(max_length = 30, primary_key=True, default=student_no_value)
+    
+    
+class Badge(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    badge_name = models.CharField(max_length = 60)
+    date_obtain = models.DateTimeField(auto_now = True)
     
     
