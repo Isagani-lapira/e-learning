@@ -45,9 +45,10 @@ module.exports = {
         extend: {
             colors: {
                 'primary':'#86CD95', //solid green
-                'secondary': '#FF934F',  //orange
-                'complementary':'#6363E5',  //violet
-                'neutral':'#A9CBB7', //light green
+                'secondary-0': '#FF934F',  //orange
+                'secondary-v':'#6363E5',  //violet
+                'neutral':'#F4F5F7', //light green
+                'accent':'#A9CBB7',
                 'border':'#D4D4D4',
             },
         },

@@ -11,7 +11,7 @@ login
             <img class="w-full h-full object-obtain rounded-l-md" src="{% static 'assets/login_vector.png' %}" alt=""/>
         </div>
         <div class="w-full flex-col p-5 gap-2 h-full">
-            <p class="text-3xl font-bold text-secondary text-center">Sign in</p>
+            <p class="text-3xl font-bold text-secondary-0 text-center">Sign in</p>
 
             {% comment %} display messages {% endcomment %}
             {% if messages %}
@@ -38,7 +38,7 @@ login
                 <button class="bg-primary hover:bg-[#78A582] font-medium text-white py-3 mt-5 rounded-md">Sign in</button>
                
                 <p class="text-center mt-2">
-                    <a href="{% url 'accountapp:register_url' %}">Doesn’t have an account? <span class="text-neutral font-medium">Register here..</span></a>
+                    <a href="{% url 'accountapp:register_url' %}">Doesn’t have an account? <span class="text-accent font-medium">Register here..</span></a>
                 </p>
             </form>
 
