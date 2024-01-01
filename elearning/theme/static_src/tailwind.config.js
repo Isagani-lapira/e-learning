@@ -49,6 +49,8 @@ module.exports = {
                 'secondary-v':'#6363E5',  //violet
                 'neutral':'#F4F5F7', //light green
                 'accent':'#A9CBB7',
+                'accent-g':'#C9F2DC', //lighter green
+                'accent-0':'#FFE1CE', //light orange
                 'border':'#D4D4D4',
             },
         },
