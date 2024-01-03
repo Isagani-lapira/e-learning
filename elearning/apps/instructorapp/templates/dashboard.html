@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+    <div class="overflow-y-auto p-5">
+        <h2 class="text-lg md:text-4xl font-bold text-secondary-0">Your Courses</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-5 p-8">
+            <!-- create new college button -->
+            <div class="h-full w-full p-5 bg-primary hover:bg-accent-g rounded-md flex flex-col items-center gap-3 cursor-pointer justify-center">
+                <i class="fa-solid fa-square-plus text-white text-3xl md:text-6xl"></i>
+                <span class="text-sm text-center md:text-2xl text-white font-bold">Create New Course</span>
+            </div>
+
+            {% comment %} Display all the courses made by this current instructor {% endcomment %}
+            {% for course in courses %}
+                <div class="h-full w-full rounded-md flex flex-col items-center cursor-pointer justify-center shadow-sm shadow-gray-400">
+                    <div class="h-14 w-full rounded-t-md py-16 bg-accent-g"></div>
+                    <div class="p-3 gap-2 flex flex-col items-center md:flex-row">
+                        <div class="w-max h-full">
+                            <img src="{{ course.Image.url }}" class="h-12 w-12 border object-contain border-secondary-0 rounded-full" alt="">
+                        </div>
+                        
+                        <div class="flex flex-col w-4/5">
+                            {% comment %} Course title {% endcomment %}
+                            <div class="flex md:flex-row gap-2 items-center">
+                                <p class="font-medium text-lg">{{ course.Title }}</p>
+                                <span class="bg-primary text-white rounded-full px-2 py-1 text-sm">{{ course.Module_count }} Modules</span>
+                            </div>
+                            
+                            {% comment %} author {% endcomment %}
+                            <span class="text-gray-700 font-medium">By: {{ instructor }}</span>
+                            {% comment %} description with 15 character {% endcomment %}
+                            <p class="text-sm">{{ course.Description|slice:":150" }}</p>
+                            
+                        </div>
+
+                        
+                    </div>
+
+
+                    <div class="flex flex-wrap gap-2 w-full justify-between px-3 mb-2">
+                        <div class="flex gap-1 items-center">
+                            <!-- date posted -->
+                            <span class="px-3 py-1 rounded-full bg-accent-g font-bold text-xs text-primary">
+                                <i class="fa-regular fa-calendar"></i>
+                                {{ course.Published_date }}
+                            </span>
+
+                            <!-- number of students -->
+                            <span class="px-3 py-1 rounded-full bg-accent-0 text-secondary-0 font-bold text-xs">
+                                <i class="fa-regular fa-calendar"></i>
+                                {{ course.Student_count }} Students
+
+                            </span>
+                        </div>
+
+                        <button class="px-3 py-2 rounded-full bg-secondary-v text-white text-xs font-semibold">View course</button>
+                    </div>
+
+                </div>
+            {% endfor %}    
+            
+        </div>
+    </div>
+{% endblock %}

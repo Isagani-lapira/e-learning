@@ -6,8 +6,13 @@ class Course(models.Model):
     instructor = models.ForeignKey(Instructor,on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     description = models.TextField()
+    course_img = models.ImageField(null=False,blank=False,default='',upload_to="images/")
     certificate = models.ImageField(null=False,blank=False,default='',upload_to="images/")
     date_created = models.DateTimeField(auto_now=True) #get current date time once it created
+    
+    
+    def formatted_date(self):
+        return self.date_created.strftime("%m/%d/%Y")
     
     
 class Enrollment(models.Model):

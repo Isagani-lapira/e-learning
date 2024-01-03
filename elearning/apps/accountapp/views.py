@@ -34,7 +34,7 @@ def login_user(request):
     # check if the user already logged in
     if request.user.is_authenticated:
         #redirect to home page
-        pass
+        return HttpResponse('login')
     else:
         return render(request,template,context) #logged in
 
