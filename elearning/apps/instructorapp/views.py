@@ -1,5 +1,7 @@
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .forms import *
 from ..accountapp.models import User, Instructor
 from ..courseapp.models import *
 # Create your views here.
@@ -13,6 +15,7 @@ def dashboard(request):
         return redirect('accountapp:login_url')
     else: 
         # go to dashboard page
+        course_form = CourseForm()
         instructor = Instructor.objects.get(user=request.user)
         templates = "dashboard.html"
         courses = GetCourses(instructor)
@@ -20,6 +23,7 @@ def dashboard(request):
         context = {
             "courses":courses,
             "instructor":full_name,
+            "forms":course_form,
         }
 
         return render(request,templates,context)
@@ -47,8 +51,34 @@ def GetCourses(instructor):
     return course_data
 
 
-
+# ------------ Create new course ---------------
+login_required(login_url="/account/")
 def AddCourse(request):
-    template = "createnewcourse.html"
-    context = {}
-    return render(request,template,context)
+    if request.method == "POST":
+        try:
+            form = CourseForm(request.POST, request.FILES)
+            if form.is_valid():
+                
+                 # add new course data
+                instructor = Instructor.objects.get(user = request.user)
+                title = form.cleaned_data['title']
+                description = form.cleaned_data['description']
+                course_img = form.cleaned_data['course_img']
+                certificate = form.cleaned_data['certificate']
+                
+                course_obj = Course(instructor = instructor,
+                                title = title,
+                                description=description, 
+                                course_img = course_img,
+                                certificate = certificate)
+
+                course_obj.save()
+                messages.success(request,"Success: New course added.")
+            else:
+                messages.error(request, f"Error: {form.errors}")
+        except Exception as e:
+            messages.error(request, f"Error: {e}")
+            
+    #back to previous page
+    previous_page = request.META.get('HTTP_REFERER')
+    return redirect(previous_page)

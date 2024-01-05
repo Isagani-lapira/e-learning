@@ -17,3 +17,11 @@ function deleteCourse(){
           })
     })
 }
+
+// toggle course modal
+function NewCourseModal(action){
+
+    if (action === 'open')
+        $('#create-course-modal').removeClass('hidden')
+    else $('#create-course-modal').addClass('hidden')
+}

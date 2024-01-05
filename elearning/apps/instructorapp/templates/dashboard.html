@@ -8,14 +8,12 @@ Dashboard
     <div class="overflow-y-auto p-5">
         <h2 class="text-lg md:text-4xl font-bold text-secondary-0">Your Courses</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-5 p-8">
-            <!-- create new college button -->
-            <a href="{% url 'instructorapp:instructo_addcourse' %}">
-                <div class="h-full w-full p-5 bg-primary hover:bg-accent-g rounded-md flex flex-col items-center gap-3 cursor-pointer justify-center">
-                    <i class="fa-solid fa-square-plus text-white text-3xl md:text-6xl"></i>
-                    <span class="text-sm text-center md:text-2xl text-white font-bold">Create New Course</span>
-                </div>
-            </a>
-            
+            <!-- create new course button -->
+            <div id="new-course-btn" class="h-full w-full p-5 bg-primary hover:bg-accent-g rounded-md flex flex-col items-center gap-3 cursor-pointer justify-center"
+                onclick="NewCourseModal('open')">
+                <i class="fa-solid fa-square-plus text-white text-3xl md:text-6xl"></i>
+                <span class="text-sm text-center md:text-2xl text-white font-bold">Create New Course</span>
+            </div>
 
             {% comment %} Display all the courses made by this current instructor {% endcomment %}
             {% for course in courses %}
@@ -29,7 +27,7 @@ Dashboard
                             <button type="submit" class="bg-white px-3 py-1 text-sm rounded-md text-gray-500 hover:bg-slate-300" onclick="deleteCourse()">Delete</button>
                         </form>
                     </div>
-                    <div class="p-3 gap-2 flex flex-col items-center md:flex-row">
+                    <div class="h-full w-full p-3 gap-2 flex flex-col justify-center md:flex-row">
                         <div class="w-max h-full">
                             <img src="{{ course.Image.url }}" class="h-12 w-12 border object-contain border-secondary-0 rounded-full" alt="">
                         </div>
@@ -75,6 +73,36 @@ Dashboard
             {% endfor %}    
             
         </div>
+
+        <!-- add new course modal -->
+        <div id="create-course-modal" class="w-full h-full absolute top-0 left-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+            <form method="post" action="{% url 'instructorapp:instructo_addcourse' %}" enctype="multipart/form-data" class="w-2/5 bg-white rounded-md p-5 text-gray-700">
+                {% csrf_token %}
+                <h2 class="text-center text-2xl text-secondary-0 font-bold mb-5">New Course</h2>
+
+                {{ forms.title.label }}
+                {{ forms.title }}
+                
+                {{ forms.description.label }}
+                {{ forms.description }}
+                
+                <div class="flex md:flex-row flex-col">
+                    <div class="flex flex-col w-1/2">
+                        {{ forms.course_img.label }}
+                        {{ forms.course_img }}
+                    </div>
+                    <div class="flex flex-col w-1/2">
+                        {{ forms.certificate.label }}
+                        {{ forms.certificate }}
+                    </div>
+                    
+                </div>
+                
+                <button type="submit" class="w-full bg-primary text-white font-medium rounded-md mt-5 py-2 hover:bg-dark-green">Create course</button>
+                <button type="button" class="text-gray-500 w-full hover:bg-gray-300 mt-1" onclick="NewCourseModal('close')">Cancel</button>
+            </form>
+        </div>
     </div>
+    
     <script src="{% static 'js/instructor.js' %}"></script>
 {% endblock %}
