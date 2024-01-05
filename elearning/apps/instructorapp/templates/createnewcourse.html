@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
-{% load static  %}
+
+{% load static %}
 {% block title %}
-Add Course
+    Add Course
 {% endblock %}
 
 {% block content %}
-course
+    <div class="h-full">
+        {% include 'course_content/sidebar.html' %}
+    </div>
 {% endblock %}
