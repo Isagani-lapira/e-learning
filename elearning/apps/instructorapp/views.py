@@ -24,7 +24,7 @@ def dashboard(request):
 
         return render(request,templates,context)
     
-    
+# ------------ Display courses -----------------   
 def GetCourses(instructor):
     course_obj = Course.objects.filter(instructor=instructor)
 
@@ -45,3 +45,10 @@ def GetCourses(instructor):
         course_data.append(course_info)
 
     return course_data
+
+
+
+def AddCourse(request):
+    template = "createnewcourse.html"
+    context = {}
+    return render(request,template,context)
