@@ -52,6 +52,7 @@ module.exports = {
                 'accent-g':'#C9F2DC', //lighter green
                 'accent-0':'#FFE1CE', //light orange
                 'border':'#D4D4D4',
+                'dark-green': '#25A76F',
             },
         },
     },
