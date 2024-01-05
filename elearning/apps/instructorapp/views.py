@@ -33,8 +33,8 @@ def GetCourses(instructor):
     for course in course_obj:
         total_modules = Module.objects.filter(course=course).count()
         total_students = Enrollment.objects.filter(course=course).count()
-        print(total_modules)
         course_info = {
+            "ID":course.id,
             "Title": course.title,
             "Description": course.description,
             "Image": course.course_img,

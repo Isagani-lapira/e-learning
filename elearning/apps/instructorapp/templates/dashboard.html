@@ -17,7 +17,15 @@ Dashboard
             {% comment %} Display all the courses made by this current instructor {% endcomment %}
             {% for course in courses %}
                 <div class="h-full w-full rounded-md flex flex-col items-center cursor-pointer justify-center shadow-sm shadow-gray-400">
-                    <div class="h-14 w-full rounded-t-md py-16 bg-accent-g"></div>
+                    <div class="h-14 w-full rounded-t-md py-16 bg-accent-g relative">
+                        <i class="fa-solid fa-ellipsis absolute top-2 right-4 text-secondary-0" onclick="openDelete(this)"></i>
+
+                        <!-- delete course -->
+                        <form id="delete_course_form" method="post" action="{% url 'courseapp:delete_url' course.ID %}" class="absolute top-5 right-3 hidden delButton">
+                            {% csrf_token %}
+                            <button type="submit" class="bg-white px-3 py-1 text-sm rounded-md text-gray-500 hover:bg-slate-300" onclick="deleteCourse()">Delete</button>
+                        </form>
+                    </div>
                     <div class="p-3 gap-2 flex flex-col items-center md:flex-row">
                         <div class="w-max h-full">
                             <img src="{{ course.Image.url }}" class="h-12 w-12 border object-contain border-secondary-0 rounded-full" alt="">
@@ -65,4 +73,5 @@ Dashboard
             
         </div>
     </div>
+    <script src="{% static 'js/instructor.js' %}"></script>
 {% endblock %}
