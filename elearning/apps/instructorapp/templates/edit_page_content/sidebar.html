@@ -1,14 +1,31 @@
+{% load instructortag %}
+{% load static %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <div class="h-full w-full flex md:flex-row">
     <aside class="w-1/4 h-full border-r border-gray-400 flex flex-col gap-2 p-5">
         <!-- course name -->
         <h2 class="font-bold text-secondary-0 text-xl">Course</h2>
-        <p type="text" class="rounded-md border border-border focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" >Rar</p>
+        <p type="text" class="rounded-md border border-border" >{{ title }}</p>
 
         <!-- units -->
         <h2 class="font-bold text-secondary-0 text-xl mt-5">Module</h2>
         <div class="h-full overflow-y-auto  relative">
 
-            <div class="h-[90%] p-2 overflow-y-auto"></div>
+            <div id="accordion" class="h-[90%] p-2 overflow-y-auto">
+                {% RetrieveCourseModule course_obj as module_title %}
+
+                {% comment %} display all module name {% endcomment %}
+                {% for title in module_title %}
+                    <h3>{{ title }}</h3>
+                    <div>
+                        <p class="text-primary text-xs font-bold text-center hover:bg-accent-g bg-opacity-20 py-2 cursor-pointer">
+                            <i class="fa-solid fa-plus"></i>
+                            Add Lesson
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
             <!-- add new module -->
             <div class="flex justify-center absolute bottom-0 w-full">
                 <button class="flex items-center gap-2 font-bold text-lg text-primary border border-border p-2 rounded-md
@@ -21,3 +38,5 @@
         </div>
     </aside>
 </div>
+
+<script src="{% static 'js/instructor.js' %}"></script>

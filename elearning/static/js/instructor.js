@@ -25,3 +25,16 @@ function NewCourseModal(action){
         $('#create-course-modal').removeClass('hidden')
     else $('#create-course-modal').addClass('hidden')
 }
+
+
+$(function() {
+    $("#accordion").accordion({
+      collapsible: true,
+      active: false, // Set to the index of the initially open section, or false to close all by default
+      heightStyle: "content",
+      activate: function(event, ui) {
+        $(".ui-state-active").removeClass("ui-state-active").addClass('bg-primary');
+        ui.newHeader.addClass("bg-primary");
+      }
+    });
+});

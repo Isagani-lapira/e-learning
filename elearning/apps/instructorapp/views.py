@@ -82,3 +82,18 @@ def AddCourse(request):
     return redirect(previous_page)
 
 
+
+
+# ------------- edit course ---------------------
+def EditCourse(request,id):
+    templates = "editcourse.html"
+
+    #starting data
+    course_obj = Course.objects.get(id=id)
+    context = {
+        "course_obj":course_obj,
+        "course_id":id,
+        "title":course_obj.title,
+    }
+    
+    return render(request, templates, context)
