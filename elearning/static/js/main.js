@@ -1,3 +1,5 @@
-$(document).ready(function(){
-    console.log('rar')
-})
+function openDelete(e){
+    var delButton = $(e).next('.delButton');
+    delButton.toggle()
+}
+

@@ -14,12 +14,20 @@ class Course(models.Model):
     def formatted_date(self):
         return self.date_created.strftime("%m/%d/%Y")
     
+    #modules related to this course
+    def count_modules(self):
+        return self.module_set.count()
+    
+    # enrolled in this course
+    def count_enrolled(self):
+        return self.enrollment_set.count()
     
 class Enrollment(models.Model):
     student = models.ForeignKey(Student,on_delete=models.CASCADE)
     course = models.ForeignKey(Course,on_delete=models.CASCADE)
     date_enrolled = models.DateTimeField(auto_now = True)
     is_finish = models.BooleanField(default = False)
+    
     
 
 class Module(models.Model):
