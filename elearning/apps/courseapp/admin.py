@@ -12,3 +12,9 @@ class EnrollmentAdmin(admin.ModelAdmin):
     list_display = ['student','course','date_enrolled','is_finish']
     
 admin.site.register(Enrollment, EnrollmentAdmin)
+
+
+class ModuleAdmin(admin.ModelAdmin):
+    list_display = ['course','title','description','cover_img']
+    
+admin.site.register(Module,ModuleAdmin)
