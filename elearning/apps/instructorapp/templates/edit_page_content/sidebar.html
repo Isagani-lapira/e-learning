@@ -13,12 +13,22 @@
         <div class="h-full overflow-y-auto  relative">
 
             <div id="accordion" class="h-[90%] p-2 overflow-y-auto">
-                {% RetrieveCourseModule course_obj as module_title %}
-
+                {% RetrieveCourseModule course_obj as modules %}
+                
                 {% comment %} display all module name {% endcomment %}
-                {% for title in module_title %}
-                    <h3>{{ title }}</h3>
+                {% for k,v in modules.items %}
+                    <h3>{{ k }}</h3>
                     <div>
+                        <ul class="flex flex-col gap-2 cursor-pointer">
+                            {% ModuleLesson v as lessons %}
+                            {% comment %} display all lesson in every module {% endcomment %}
+                            {% for lesson in lessons %}
+                                <li class="list-disc flex justify-between items-center rounded-sm hover:bg-secondary-0 hover:text-white hover:bg-opacity-50 p-2">
+                                    <span>{{lesson}}</span>
+                                    <i class="fa-regular fa-trash-can text-gray-300 hover:text-red-400"></i>
+                                </li>
+                            {% endfor %}
+                        </ul>
                         <p class="text-primary text-xs font-bold text-center hover:bg-accent-g bg-opacity-20 py-2 cursor-pointer">
                             <i class="fa-solid fa-plus"></i>
                             Add Lesson
@@ -28,7 +38,7 @@
             </div>
             <!-- add new module -->
             <div class="flex justify-center absolute bottom-0 w-full">
-                <button class="flex items-center gap-2 font-bold text-lg text-primary border border-border p-2 rounded-md
+                <button class="flex items-center gap-2 font-bold text-sm text-primary border border-border p-2 rounded-md
                         hover:bg-primary hover:text-white">
                     <i class="fa-solid fa-plus"></i>
                     Add Unit
