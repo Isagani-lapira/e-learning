@@ -16,4 +16,7 @@ def DeleteCourse(request, course_id):
         messages.error(request, f"Error: {e}")
         print(e)
         return redirect(request.META.get('HTTP_REFERER','/')) #go back to previous url
-    
+
+def CourseInfo(request):
+    template = "course_info.html"
+    return render(request, template)

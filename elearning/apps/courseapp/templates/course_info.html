@@ -1,0 +1,54 @@
+{% load static %}
+{% block title %}
+Course Information
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+   <!-- component -->
+<div class="card border rounded-lg p-5 mt-5 mr-5 ml-5 " style="background-color: #86CD95;">
+    <div class="card bg-white shadow-lg rounded-lg p-5 mt-5 mr-5 ml-5 mb-5 " style="background-color: #BCE6C5;">
+        <div class="card_category"> 
+            <div class="card_text flex ">
+                <div class="category_imag w-2/6 flex items-center flex-col">
+                    <img class="fill-current inline-block  object-obtain rounded-full w-30 md:w-48 lg:w-80" src="{% static 'assets/course_img.png' %}" alt=""/>
+				</div>
+                <div class="contentextrat w-4/6 mr-2">
+					<div class="text-white text-sm md:text-lg lg:text-2lg xl:text-xl">Created: 10/09/2019</div>
+					<div class="category_title font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white leading-tight mt-2">Course Title</div>
+						<div class="extratext text-white text-justify text-sm md:text-2lg lg:text-xl xl:text-1xl"> Course Description <br> by: Instructor Name <br>
+
+                            <button type="button" class="bg-indigo-600 hover:bg-indigo-700 hover:bg-indigo-750 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 mt-5">
+                                Take Course
+                            </button>
+
+					    </div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card border rounded-lg p-5 mt-5 mr-5 ml-5 " style="background-color: #F4F5F7;">
+    <div class="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-orange-400 leading-tight mt-2 mb-2">Course Modules</div>
+    
+    <div class="flex flex-col items-center justify-center gap-5 mt-6 md:flex-row">
+        <a class="flex-grow inline-block w-full min-w-[250px] px-6 py-4 text-white transition-all rounded-md sm:w-auto bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-b dark:shadow-indigo-900 shadow-indigo-200 hover:-translate-y-px"
+            href="">Module 1
+        </a>
+        <a class="flex-grow inline-block w-full min-w-[250px] px-6 py-4 text-white transition-all rounded-md sm:w-auto bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-b dark:shadow-indigo-900 shadow-indigo-200 hover:-translate-y-px"
+            href="">Module 2
+        </a>
+    </div>
+</div>
+</body>
+</html>
+
+{% endblock %}
