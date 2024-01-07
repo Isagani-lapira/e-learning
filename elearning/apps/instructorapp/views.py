@@ -82,10 +82,3 @@ def AddCourse(request):
     return redirect(previous_page)
 
 
-
-# ------------ practice query set --------------
-def practice(request):
-    instructor = Instructor.objects.get(user = request.user)
-    
-    count = instructor.count_courses()
-    return HttpResponse(count)
