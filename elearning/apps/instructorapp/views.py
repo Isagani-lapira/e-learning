@@ -35,16 +35,14 @@ def GetCourses(instructor):
     course_data = []
 
     for course in course_obj:
-        total_modules = Module.ModuleCount(course_obj.get(id = course.id))
-        total_students = Enrollment.EnrolledCount(course)
         course_info = {
             "ID":course.id,
             "Title": course.title,
             "Description": course.description,
             "Image": course.course_img,
             "Published_date": course.formatted_date(),
-            "Module_count":total_modules,
-            "Student_count":total_students,
+            "Module_count":course.count_modules,
+            "Student_count":course.count_enrolled,
         }
         course_data.append(course_info)
 
@@ -87,10 +85,7 @@ def AddCourse(request):
 
 # ------------ practice query set --------------
 def practice(request):
-    # value = Course.
-    value = Course.objects.all() #retrieve all course object
-    specific_course = Course.objects.get(id=7)
-    value = Course.objects.exclude(id=9) #retrieve all except the set parameter
+    instructor = Instructor.objects.get(user = request.user)
     
-    module = Module.ModuleCount(specific_course)
-    return HttpResponse(module)
+    count = instructor.count_courses()
+    return HttpResponse(count)

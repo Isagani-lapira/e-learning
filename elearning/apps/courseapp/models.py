@@ -14,6 +14,13 @@ class Course(models.Model):
     def formatted_date(self):
         return self.date_created.strftime("%m/%d/%Y")
     
+    #modules related to this course
+    def count_modules(self):
+        return self.module_set.count()
+    
+    # enrolled in this course
+    def count_enrolled(self):
+        return self.enrollment_set.count()
     
 class Enrollment(models.Model):
     student = models.ForeignKey(Student,on_delete=models.CASCADE)
@@ -22,9 +29,6 @@ class Enrollment(models.Model):
     is_finish = models.BooleanField(default = False)
     
     
-    def EnrolledCount(course):
-        return Enrollment.objects.filter(course = course).count()
-    
 
 class Module(models.Model):
     course = models.ForeignKey(Course,on_delete=models.CASCADE)
@@ -32,8 +36,6 @@ class Module(models.Model):
     description = models.TextField(blank=False, null=False)
     cover_img = models.ImageField(null=True, blank=True,upload_to="images/")
     
-    def ModuleCount(course):
-        return Module.objects.filter(course = course).count()
     
 class Lesson(models.Model):
     module = models.ForeignKey(Module,on_delete=models.CASCADE)

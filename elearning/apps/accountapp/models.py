@@ -14,6 +14,8 @@ class Instructor(models.Model):
     instructor_description = models.TextField(blank=True, default='')
     profile_img = models.ImageField(null=True, blank=True, upload_to="images/") #default image location
     
+    def count_courses(self):
+        return self.course_set.count()
     
 class Student(models.Model):
     #get random characters
