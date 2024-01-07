@@ -18,3 +18,8 @@ class ModuleAdmin(admin.ModelAdmin):
     list_display = ['course','title','description','cover_img']
     
 admin.site.register(Module,ModuleAdmin)
+
+class LessonAdmin(admin.ModelAdmin):
+    list_display = ['module','title','content','cover_img']
+
+admin.site.register(Lesson,LessonAdmin)
