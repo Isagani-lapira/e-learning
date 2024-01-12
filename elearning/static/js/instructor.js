@@ -20,9 +20,10 @@ function deleteCourse(){
 
 
 function deleteModuleData(id,isModule){
+    
     Swal.fire({
         title: 'Delete Module',
-        text: 'Are you sure you want to delete this module?',
+        text: `Are you sure you want to delete this ${(isModule)? "Module":"Lesson"}?`,
         icon: 'error',
         showCancelButton: true,
         confirmButtonColor: '#F35F5F',
