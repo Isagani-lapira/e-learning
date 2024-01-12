@@ -1,5 +1,6 @@
-from django.shortcuts import redirect, render, HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from ..instructorapp.forms import ModuleForm
 from .models import *
@@ -18,7 +19,6 @@ def DeleteCourse(request, course_id):
         return redirect(request.META.get('HTTP_REFERER','/')) #go back to previous url
     except Exception as e:
         messages.error(request, f"Error: {e}")
-        print(e)
         return redirect(request.META.get('HTTP_REFERER','/')) #go back to previous url
     
     
@@ -54,3 +54,37 @@ def AddModule(request, id):
                 messages.error(request,f"Error: {e}")
         
     return redirect(request.META.get('HTTP_REFERER','/')) # go back to previous url
+
+
+
+
+# ------------ Delete module ----------
+login_required(login_url="/account/")
+def deleteModule(request, id):
+    if request.method == 'GET':
+        try:
+            module_obj = get_object_or_404(Module, id=id)
+            module_name = module_obj.title
+            module_obj.delete()
+            messages.success(request,f"Module {module_name} successfully deleted.")
+        except Exception as e:
+            messages.error(request,f"Error: {e}")
+            
+            
+    return redirect(request.META.get('HTTP_REFERER','/'))
+
+
+# ------------ delete lesson -----------------
+def deleteLesson(request,id):
+    if request.method == 'GET':
+        try:
+            lesson_obj = get_object_or_404(Lesson,id=id)
+            lesson_title = lesson_obj.title
+            lesson_obj.delete()
+            
+            #return message with title included
+            messages.success(request, f"Lesson {lesson_title} successfully deleted.")
+        except Exception as e:
+            messages.error(request,f"Error: {e}")
+
+    return redirect(request.META.get('HTTP_REFERER','/')) #back to previous page

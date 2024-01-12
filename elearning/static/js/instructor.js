@@ -18,6 +18,24 @@ function deleteCourse(){
     })
 }
 
+
+function deleteModuleData(id,isModule){
+    Swal.fire({
+        title: 'Delete Module',
+        text: 'Are you sure you want to delete this module?',
+        icon: 'error',
+        showCancelButton: true,
+        confirmButtonColor: '#F35F5F',
+        cancelButtonColor: '#D0D0D0',
+    }).then(result=>{
+        if(result.isConfirmed){
+            if(isModule)
+                $('#deleteModalForm_'+id).submit() //delete a form of specific module
+            else
+                $('#delLesson_'+id).submit()// delete lesson in module
+        }
+    })
+}
 // toggle course modal
 function NewCourseModal(action){
 
