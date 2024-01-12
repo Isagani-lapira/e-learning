@@ -22,8 +22,8 @@ function deleteCourse(){
 function NewCourseModal(action){
 
     if (action === 'open')
-        $('#create-course-modal').removeClass('hidden')
-    else $('#create-course-modal').addClass('hidden')
+        $('.modal').removeClass('hidden')
+    else $('.modal').addClass('hidden')
 }
 
 

@@ -17,7 +17,7 @@
                 
                 {% comment %} display all module name {% endcomment %}
                 {% for k,v in modules.items %}
-                    <h3>{{ k }}</h3>
+                    <h3>{{ k|title }}</h3>
                     <div>
                         <ul class="flex flex-col gap-2 cursor-pointer">
                             {% ModuleLesson v as lessons %}
@@ -38,15 +38,41 @@
             </div>
             <!-- add new module -->
             <div class="flex justify-center absolute bottom-0 w-full">
-                <button class="flex items-center gap-2 font-bold text-sm text-primary border border-border p-2 rounded-md
-                        hover:bg-primary hover:text-white">
+                <button type="submit" class="flex items-center gap-2 font-bold text-sm text-primary border border-border p-2 rounded-md
+                hover:bg-primary hover:text-white" onclick="NewCourseModal('open')">
                     <i class="fa-solid fa-plus"></i>
-                    Add Unit
+                    Add Module
                 </button>
+                
             </div>
             
         </div>
     </aside>
 </div>
+
+<!-- add module modal -->
+<div class="absolute top-0 left-0 h-full w-full bg-black bg-opacity-50 flex items-center justify-center modal hidden">
+    <div class="w-2/5 h-max bg-white rounded-md p-5">
+        <h2 class="text-2xl text-primary font-semibold text-center py-2 border-b border-gray-200">Add Module</h2>
+        <form action="{% url 'courseapp:AddModule_url' course_id %}" class="p-2" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <label for="{{ module_form.title.id_for_label }}">Module Title</label>
+            {{ module_form.title }}
+
+            <label for="{{ module_form.description.id_for_label }}">Description</label>
+            {{ module_form.description }}
+
+            <label for="{{ module_form.cover_img.id_for_label }}">Module cover photo (optional)</label>
+            {{ module_form.cover_img }}
+
+            <div class="flex justify-end gap-2">
+                <button type="button" class="text-gray-400 hover:bg-gray-300 rounded-md px-4 py-2" onclick="NewCourseModal('close')">Cancel</button>
+                <button type="submit" class="bg-primary px-4 py-2 text-white font-semibold hover:bg-dark-green rounded-md">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 <script src="{% static 'js/instructor.js' %}"></script>
