@@ -1,5 +1,6 @@
-from django.shortcuts import redirect, render, HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from ..instructorapp.forms import ModuleForm
 from .models import *
@@ -54,3 +55,23 @@ def AddModule(request, id):
                 messages.error(request,f"Error: {e}")
         
     return redirect(request.META.get('HTTP_REFERER','/')) # go back to previous url
+
+
+
+
+# ------------ Delete module ----------
+login_required(login_url="/account/")
+def deleteModule(request, id):
+    if request.method == 'GET':
+        try:
+            module_obj = get_object_or_404(Module, id=id)
+            module_name = module_obj.title
+            module_obj.delete()
+            print(module_name)
+            messages.success(request,f"Module {module_name} successfully deleted")
+        except Exception as e:
+            print(e)
+            messages.error(request,f"Error: {e}")
+            
+            
+    return redirect(request.META.get('HTTP_REFERER','/'))

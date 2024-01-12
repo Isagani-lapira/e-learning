@@ -17,7 +17,12 @@
                 
                 {% comment %} display all module name {% endcomment %}
                 {% for k,v in modules.items %}
-                    <h3>{{ k|title }}</h3>
+                   
+                    <h3>
+                        {{ k|title }}
+                        <i class="fa-regular fa-trash-can text-gray-300 hover:text-red-400" onclick="deleteModule('{{ v.id }}')"></i>
+                        <form id="deleteModalForm_{{ v.id }}" action="{% url 'courseapp:DelModule_url' v.id  %}" method="get" class="hidden"></form>
+                    </h3>
                     <div>
                         <ul class="flex flex-col gap-2 cursor-pointer">
                             {% ModuleLesson v as lessons %}
