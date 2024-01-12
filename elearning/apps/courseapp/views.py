@@ -19,7 +19,6 @@ def DeleteCourse(request, course_id):
         return redirect(request.META.get('HTTP_REFERER','/')) #go back to previous url
     except Exception as e:
         messages.error(request, f"Error: {e}")
-        print(e)
         return redirect(request.META.get('HTTP_REFERER','/')) #go back to previous url
     
     
@@ -67,10 +66,8 @@ def deleteModule(request, id):
             module_obj = get_object_or_404(Module, id=id)
             module_name = module_obj.title
             module_obj.delete()
-            print(module_name)
             messages.success(request,f"Module {module_name} successfully deleted")
         except Exception as e:
-            print(e)
             messages.error(request,f"Error: {e}")
             
             
