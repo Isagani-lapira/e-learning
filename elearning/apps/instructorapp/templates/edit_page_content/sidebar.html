@@ -20,17 +20,18 @@
                    
                     <h3>
                         {{ k|title }}
-                        <i class="fa-regular fa-trash-can text-gray-300 hover:text-red-400" onclick="deleteModule('{{ v.id }}')"></i>
+                        <i class="fa-regular fa-trash-can text-gray-300 hover:text-red-400" onclick="deleteModuleData('{{ v.id }}',true)"></i>
                         <form id="deleteModalForm_{{ v.id }}" action="{% url 'courseapp:DelModule_url' v.id  %}" method="get" class="hidden"></form>
                     </h3>
                     <div>
                         <ul class="flex flex-col gap-2 cursor-pointer">
                             {% ModuleLesson v as lessons %}
                             {% comment %} display all lesson in every module {% endcomment %}
-                            {% for lesson in lessons %}
+                            {% for i,j in lessons.items %}
                                 <li class="list-disc flex justify-between items-center rounded-sm hover:bg-secondary-0 hover:text-white hover:bg-opacity-50 p-2">
-                                    <span>{{lesson}}</span>
-                                    <i class="fa-regular fa-trash-can text-gray-300 hover:text-red-400"></i>
+                                    <span>{{j}}</span>
+                                    <i class="fa-regular fa-trash-can text-gray-300 hover:text-red-400" onclick="deleteModuleData('{{i}}',false)"></i>
+                                    <form id="delLesson_{{i}}" action="{% url 'courseapp:DelLesson_url' i %}" method="get" class="hidden"></form>
                                 </li>
                             {% endfor %}
                         </ul>

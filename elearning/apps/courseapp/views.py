@@ -66,9 +66,25 @@ def deleteModule(request, id):
             module_obj = get_object_or_404(Module, id=id)
             module_name = module_obj.title
             module_obj.delete()
-            messages.success(request,f"Module {module_name} successfully deleted")
+            messages.success(request,f"Module {module_name} successfully deleted.")
         except Exception as e:
             messages.error(request,f"Error: {e}")
             
             
     return redirect(request.META.get('HTTP_REFERER','/'))
+
+
+# ------------ delete lesson -----------------
+def deleteLesson(request,id):
+    if request.method == 'GET':
+        try:
+            lesson_obj = get_object_or_404(Lesson,id=id)
+            lesson_title = lesson_obj.title
+            lesson_obj.delete()
+            
+            #return message with title included
+            messages.success(request, f"Lesson {lesson_title} successfully deleted.")
+        except Exception as e:
+            messages.error(request,f"Error: {e}")
+
+    return redirect(request.META.get('HTTP_REFERER','/')) #back to previous page
