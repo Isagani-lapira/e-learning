@@ -90,10 +90,12 @@ def EditCourse(request,id):
 
     #starting data
     course_obj = Course.objects.get(id=id)
+    add_module_form = ModuleForm()
     context = {
         "course_obj":course_obj,
         "course_id":id,
         "title":course_obj.title,
+        "module_form":add_module_form
     }
     
     return render(request, templates, context)
