@@ -19,6 +19,7 @@ function deleteCourse(){
 }
 
 
+// for deletion of module or lesson
 function deleteModuleData(id,isModule){
     
     Swal.fire({
