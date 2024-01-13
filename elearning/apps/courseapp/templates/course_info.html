@@ -1,25 +1,16 @@
+{% extends 'base.html' %}
 {% load static %}
 {% block title %}
 Course Information
 {% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Information</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-   <!-- component -->
 <div class="card border rounded-lg p-5 mt-5 mr-5 ml-5 " style="background-color: #86CD95;">
     <div class="card bg-white shadow-lg rounded-lg p-5 mt-5 mr-5 ml-5 mb-5 " style="background-color: #BCE6C5;">
         <div class="card_category"> 
             <div class="card_text flex ">
                 <div class="category_imag w-2/6 flex items-center flex-col">
-                    <img class="fill-current inline-block  object-obtain rounded-full w-30 md:w-48 lg:w-80" src="{% static 'assets/course_img.png' %}" alt=""/>
+                    <img class="fill-current inline-block  object-obtain rounded-full w-30 md:w-48 lg:w-80" src="" alt=""/>
 				</div>
                 <div class="contentextrat w-4/6 mr-2">
 					<div class="text-white text-sm md:text-lg lg:text-2lg xl:text-xl">Created: 10/09/2019</div>
@@ -48,7 +39,5 @@ Course Information
         </a>
     </div>
 </div>
-</body>
-</html>
 
 {% endblock %}
