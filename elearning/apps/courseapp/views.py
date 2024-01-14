@@ -20,6 +20,10 @@ def DeleteCourse(request, course_id):
     except Exception as e:
         messages.error(request, f"Error: {e}")
         return redirect(request.META.get('HTTP_REFERER','/')) #go back to previous url
+
+def CourseInfo(request):
+    template = "course_info.html"
+    return render(request, template)
     
     
 # -------------- add module --------------------

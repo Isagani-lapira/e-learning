@@ -6,6 +6,7 @@ app_name = "courseapp"
 urlpatterns = [
     path('',views.index, name="course_url"),
     path('delete_course/<int:course_id>/', views.DeleteCourse,name="delete_url"),
+    path('course_info/',views.CourseInfo, name="courseInfo_url"),
     path('addmodule/<int:id>/',views.AddModule,name="AddModule_url"),
     path('deletemodule/<int:id>/',views.deleteModule, name="DelModule_url"),
     path('deletelesson/<int:id>/',views.deleteLesson, name="DelLesson_url"),
