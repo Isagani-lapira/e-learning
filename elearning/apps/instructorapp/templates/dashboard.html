@@ -75,7 +75,7 @@ Dashboard
         </div>
 
         <!-- add new course modal -->
-        <div id="create-course-modal" class="w-full h-full absolute top-0 left-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div id="create-course-modal" class="modal w-full h-full absolute top-0 left-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
             <form method="post" action="{% url 'instructorapp:instructo_addcourse' %}" enctype="multipart/form-data" class="w-2/5 bg-white rounded-md p-5 text-gray-700">
                 {% csrf_token %}
                 <h2 class="text-center text-2xl text-secondary-0 font-bold mb-5">New Course</h2>

@@ -13,5 +13,6 @@ def RetrieveCourseModule(course):
 @register.simple_tag
 def ModuleLesson(module):
     #retrieve all lessons for every courses
-    lessons = Lesson.objects.filter(module=module ).values_list('title',flat=True)
-    return lessons
+    lessons = Lesson.objects.filter(module=module )
+    lesson_dict = {lesson.id: lesson.title for lesson in lessons}
+    return lesson_dict

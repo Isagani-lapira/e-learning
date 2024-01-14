@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import *
-from ..accountapp.models import User, Instructor
+from ..accountapp.models import Instructor
 from ..courseapp.models import *
 # Create your views here.
 @login_required(login_url='/account/') #get back to login
@@ -85,15 +85,18 @@ def AddCourse(request):
 
 
 # ------------- edit course ---------------------
+login_required(login_url="/account/")
 def EditCourse(request,id):
     templates = "editcourse.html"
 
     #starting data
     course_obj = Course.objects.get(id=id)
+    add_module_form = ModuleForm()
     context = {
         "course_obj":course_obj,
         "course_id":id,
         "title":course_obj.title,
+        "module_form":add_module_form
     }
     
     return render(request, templates, context)

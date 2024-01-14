@@ -26,3 +26,26 @@ class CourseForm(forms.Form):
         label="Certificate (Image format)",
         widget=forms.ClearableFileInput())
     
+    
+class ModuleForm(forms.Form):
+    title = forms.CharField(
+        max_length=150,
+        label="Module Title",
+        widget=forms.TextInput(attrs={
+            'placeholder':'Enter module title',
+            'class':'w-full border border-border rounded-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary mb-2'
+        })
+    )
+    
+    description = forms.CharField(
+        label="Description",
+        widget=forms.Textarea(attrs={
+            'placeholder':'Enter description for this module',
+            'class':'w-full border border-border rounded-md resize-none h-64 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary mb-2'
+        })
+    )
+    
+    cover_img = forms.ImageField(
+        widget=forms.ClearableFileInput(),
+        required=False)
+    
