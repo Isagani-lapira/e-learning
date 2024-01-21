@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tailwind',
     'theme',
+    'ckeditor',
     'django_browser_reload',
     'apps.accountapp.apps.AccountappConfig',
     'apps.profileapp.apps.ProfileappConfig',
@@ -132,3 +133,18 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Table', 'HorizontalRule', 'SpecialChar'],
+            ['Format', 'Styles', 'RemoveFormat'],
+        ],
+        'width': 1000,
+        'height': 300,
+        'removePlugins': 'stylesheetparser',
+    },
+}

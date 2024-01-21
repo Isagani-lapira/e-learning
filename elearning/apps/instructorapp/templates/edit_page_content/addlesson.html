@@ -1,0 +1,8 @@
+{{ lesson_form.media }}
+<div class="w-full h-full overflow-y-auto">
+    <form method="POST" class="p-5">
+        {% csrf_token %}
+        {{ lesson_form.as_p }}
+        <button type="submit" class="px-3 py-2 rounded-md bg-primary hover:bg-dark-green mt-4 text-white">Add Lesson</button>
+    </form>
+</div>

@@ -1,5 +1,5 @@
 from django import forms
-
+from ckeditor.widgets import CKEditorWidget
 
 class CourseForm(forms.Form):
     title = forms.CharField(
@@ -49,3 +49,18 @@ class ModuleForm(forms.Form):
         widget=forms.ClearableFileInput(),
         required=False)
     
+    
+class LessonForm(forms.Form):
+    title = forms.CharField(
+        max_length=150,
+        label="Lesson Title",
+        widget=forms.TextInput(attrs={
+            'placeholder':'Enter Lesson title',
+            'class':'w-full border border-border rounded-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary mb-2'
+        })
+    )
+    content = forms.CharField(widget=CKEditorWidget())
+    cover_img = forms.ImageField(
+        widget=forms.ClearableFileInput(),
+        required=False
+    )
