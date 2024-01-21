@@ -51,6 +51,13 @@ class ModuleForm(forms.Form):
     
     
 class LessonForm(forms.Form):
+    
+    module = forms.CharField(
+        widget=forms.TextInput(attrs={
+        'id':'module_id',
+        'type':'hidden'
+    })
+    )
     title = forms.CharField(
         max_length=150,
         label="Lesson Title",

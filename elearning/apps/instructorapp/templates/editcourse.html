@@ -9,5 +9,13 @@
     <div class="h-full p-5 flex gap-2">
         
         {% include 'edit_page_content/sidebar.html' %}
+        <div id="lesson_view" class="w-full h-full overflow-y-auto">
+            View
+        </div>
+        <div id="add_lesson_view" class="w-full h-full overflow-y-auto hidden">
+            {% include 'edit_page_content/addlesson.html' %}
+        </div>
+        
+        
     </div>
 {% endblock %}

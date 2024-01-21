@@ -58,3 +58,10 @@ $(function() {
       }
     });
 });
+
+
+function toggleLessonView(module_id){
+    $('#lesson_view').toggleClass('hidden')
+    $('#add_lesson_view').toggle()
+    $('#module_id').val(module_id)
+}
