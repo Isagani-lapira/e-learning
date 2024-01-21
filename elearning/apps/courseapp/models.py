@@ -1,5 +1,6 @@
 from django.db import models
 from apps.accountapp.models import *
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Course(models.Model):
@@ -40,7 +41,7 @@ class Module(models.Model):
 class Lesson(models.Model):
     module = models.ForeignKey(Module,on_delete=models.CASCADE)
     title = models.CharField(blank=False, null=False, max_length = 150)
-    content = models.TextField(blank=False, null=False)
+    content = RichTextField(blank=False, null=False)
     cover_img = models.ImageField(null=True, blank=True,upload_to="images/")
     
 
